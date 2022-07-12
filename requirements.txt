@@ -2,6 +2,7 @@ numpy
 pandas
 gunicorn
 Flask
+argparse
 rq
 dash
 plotly
