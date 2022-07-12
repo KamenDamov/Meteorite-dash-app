@@ -1,6 +1,7 @@
 numpy
 pandas
 gunicorn
+Flask
 rq
 dash
 plotly
