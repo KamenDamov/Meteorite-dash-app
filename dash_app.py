@@ -43,6 +43,7 @@ fig = go.Figure(
 
 fig.update_layout(
         title = 'Meteorite landings',
+        height = 700, 
         geo = dict(
             showland = True,
             landcolor = "rgb(100, 100, 100)",
@@ -168,7 +169,7 @@ def update_charts(Year, val):
             cmin = 0,
             color = filtered_data['mass (g)'],
             cmax = filtered_data['mass (g)'].max(),
-            colorbar_title="Mass of meteorite"
+            colorbar_title="Mass of meteorite (in grams)"
         )
     )
 )
@@ -176,6 +177,7 @@ def update_charts(Year, val):
 
 fig.update_layout(
         title = 'Meteorite landings',
+        height = 700,
         geo = dict(
             showland = True,
             landcolor = "rgb(100, 100, 100)",
