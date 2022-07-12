@@ -1,1 +1,1 @@
-web: gunicorn WebApp.py --port=$PORT
+web: gunicorn WebApp.py:$PORT
