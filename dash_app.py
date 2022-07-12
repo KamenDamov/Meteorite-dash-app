@@ -6,8 +6,6 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt 
 import plotly.express as px
-#%matplotlib inline
-import functools as f
 import plotly.graph_objects as go
 import dash
 from dash import dcc
@@ -60,13 +58,13 @@ app.layout = html.Div(
     children=[html.Div(
             style={
                 'backgroundColor':'#303030',
-                'color':'white'
+                'color':'white',
+                'fontFamily': '"Lucida Console", "Courier New", monospace'
             },
             children=[
                 html.H1(
                     style = {
                         'textAlign': 'center',
-                        'fontStyle': 'Source Code Pro'
                     },
                     children="Meteorites fallen on earth",
                     className="header-title" 
@@ -74,7 +72,6 @@ app.layout = html.Div(
                 html.H2(
                     style = {
                         'textAlign': 'center',
-                        'fontStyle':'Source Code Pro'
                     },
                     children="A dashboard to visualize one of humanity's biggest existential threats",
                     className="header-description", 
@@ -84,7 +81,12 @@ app.layout = html.Div(
     ),#Description below the header        
         html.Div(
             children=[
-                html.Div(children = 'Year', style={'fontSize': "24px"},className = 'menu-title'),
+                html.Div(children = 'Year', 
+                        style={'paddingTop':'5px',
+                                'fontSize': "20px",
+                                'fontFamily': '"Lucida Console", "Courier New", monospace'
+                                },
+                        className = 'menu-title'),
                 dcc.Dropdown(
                     id = 'year-filter',
                     options = [
@@ -92,19 +94,28 @@ app.layout = html.Div(
                        for Year in np.append(np.sort(df.year.unique()),"All")
                     ], #'Year' is the filter
                     value = "All",
-                    className = 'dropdown', style={'fontSize': "24px",'textAlign': 'center'},
+                    className = 'dropdown', style={'fontSize': "20px",
+                                                    'textAlign': 'center',
+                                                    'fontFamily': '"Lucida Console", "Courier New", monospace'},
                 ),
             ],
             className = 'menu',
 ),
     html.Div(
             children=[
-                html.Div(children = 'Want to see the most significant meteorites in history', style={'fontSize': "24px"},className = 'menu-title'),
+                html.Div(children = 'Would you want to see the most significant meteorites in history?', 
+                style={'paddingTop':'15px',
+                        'fontSize': "20px",
+                        'fontFamily': '"Lucida Console", "Courier New", monospace'},
+                className = 'menu-title'),
                 dcc.Checklist(
                     ['Yes'],
                     id = "checklist",
                     inline=True,
-                    value = ""
+                    value = "",
+                    style={'paddingTop':'5px',
+                        'fontSize': "20px",
+                        'fontFamily': '"Lucida Console", "Courier New", monospace'}
                     ),
                 ],
             className = 'menu'),
