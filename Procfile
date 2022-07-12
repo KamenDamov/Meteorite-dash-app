@@ -1,1 +1,1 @@
-web: gunicorn WebApp.py:$PORT
+web: gunicorn WebApp.py:4096
