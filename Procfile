@@ -1,1 +1,1 @@
-web: gunicorn WebApp.py:4096
+web: gunicorn WebApp:server
