@@ -1,1 +1,1 @@
-web: python dash-app.py --port=$PORT
+web: python WebApp.py --port=$PORT
