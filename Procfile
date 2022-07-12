@@ -1,1 +1,1 @@
-web: source setup.sh && python WebApp.py
+web: gunicorn WebApp.py --port=$PORT
