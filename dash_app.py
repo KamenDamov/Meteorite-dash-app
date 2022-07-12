@@ -1,4 +1,5 @@
 #Imports
+from re import template
 from click import style
 import numpy as np
 import pandas as pd
@@ -57,16 +58,26 @@ fig.update_layout(
 app = dash.Dash(__name__)
 app.layout = html.Div(
     children=[html.Div(
+            style={
+                'backgroundColor':'#303030',
+                'color':'white'
+            },
             children=[
                 html.H1(
+                    style = {
+                        'textAlign': 'center',
+                        'fontStyle': 'Source Code Pro'
+                    },
                     children="Meteorites fallen on earth",
-                    style={'textAlign': 'center'}, 
                     className="header-title" 
                 ), #Header title
                 html.H2(
-                    children="A dashboard visualize one of humanity's biggest existential threats",
+                    style = {
+                        'textAlign': 'center',
+                        'fontStyle':'Source Code Pro'
+                    },
+                    children="A dashboard to visualize one of humanity's biggest existential threats",
                     className="header-description", 
-                    style={'textAlign': 'center'},
                 ),
             ],
             className="header",
@@ -86,7 +97,7 @@ app.layout = html.Div(
             ],
             className = 'menu',
 ),
-html.Div(
+    html.Div(
             children=[
                 html.Div(children = 'Want to see the most significant meteorites in history', style={'fontSize': "24px"},className = 'menu-title'),
                 dcc.Checklist(
