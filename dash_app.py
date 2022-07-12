@@ -43,7 +43,7 @@ fig = go.Figure(
 
 fig.update_layout(
         title = 'Meteorite landings',
-        height = 700, 
+        height = 600, 
         geo = dict(
             showland = True,
             landcolor = "rgb(100, 100, 100)",
@@ -177,7 +177,7 @@ def update_charts(Year, val):
 
 fig.update_layout(
         title = 'Meteorite landings',
-        height = 700,
+        height = 600,
         geo = dict(
             showland = True,
             landcolor = "rgb(100, 100, 100)",
