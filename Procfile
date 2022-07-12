@@ -1,1 +1,1 @@
-web: source setup.sh && python dash-app.py
+web: python dash-app.py
