@@ -9,7 +9,6 @@ from dash import html
 from dash.dependencies import Input, Output, ALL, State
 
 df = pd.read_csv('meteorites_new')
-print(df.info())
 df = df.drop('Unnamed: 0', axis=1)
 
 fig = go.Figure(
@@ -43,21 +42,14 @@ fig.update_geos(
 
 fig.update_layout(
         title = 'Meteorite landings',
-        height = 600, 
-        #geo = dict(
-        #    showland = True,
-        #    #landcolor = "rgb(100, 100, 100)",
-        #    #subunitcolor = "rgb(0, 0, 0)",
-        #    #ountrycolor = "rgb(0, 0, 0)",
-        #    countrywidth = 0.5,
-        #    subunitwidth = 0.5
-        #)
+        height = 600
     )
 
 
 
 app = dash.Dash(__name__)
 server = app.server
+
 app.layout = html.Div(
     children=[html.Div(
             style={
@@ -66,13 +58,15 @@ app.layout = html.Div(
                 'fontFamily': '"Lucida Console", "Courier New"'
             },
             children=[
+                #Title
                 html.H1(
                     style = {
                         'textAlign': 'center',
                     },
                     children="Meteorites fallen on earth",
                     className="header-title" 
-                ), #Header title
+                ), 
+                #Description 
                 html.H2(
                     style = {
                         'textAlign': 'center',
@@ -82,7 +76,9 @@ app.layout = html.Div(
                 ),
             ],
             className="header",
-    ),#Description below the header        
+    ),     
+    #Filters 
+    #Year filter  
         html.Div(
             children=[
                 html.Div(children = 'Year', 
@@ -98,13 +94,15 @@ app.layout = html.Div(
                        for Year in np.append(np.sort(df.year.unique()),"All")
                     ], #'Year' is the filter
                     value = "All",
-                    className = 'dropdown', style={'fontSize': "20px",
-                                                    'textAlign': 'center',
-                                                    'fontFamily': '"Lucida Console", "Courier New", monospace'},
+                    className = 'dropdown', 
+                    style={'fontSize': "20px",
+                           'textAlign': 'center',
+                           'fontFamily': '"Lucida Console", "Courier New", monospace'},
                 ),
             ],
             className = 'menu',
 ),
+    #Biggest meteorite filter
     html.Div(
             children=[
                 html.Div(children = 'Would you want to see the most significant meteorites in history (top 0.1% in terms of mass in kg) ?', 
@@ -134,9 +132,9 @@ html.Div(
                 ),
                 style={'width': '100%', 'display': 'inline-block'},
             )])
-]) #the dropdown function
+])
 
-#Callback to create interaction
+#Callback to activate filters
 @app.callback(
     dash.dependencies.Output("world_chart", "figure"), 
     [dash.dependencies.Input("year-filter", "value"),
@@ -166,7 +164,6 @@ def update_charts(Year, val):
             symbol = 'circle',
             line = dict(
                 width=1,
-                #color='rgba(102, 102, 102)'
             ),
             colorscale = 'Viridis',
             cmin = 0,
