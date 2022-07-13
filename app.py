@@ -26,7 +26,7 @@ fig = go.Figure(
             symbol = 'circle',
             line = dict(
                 width=1,
-                color='rgba(102, 102, 102)'
+                #color='rgba(102, 102, 102)'
             ),
             colorscale = 'Viridis',
             cmin = 0,
@@ -37,22 +37,24 @@ fig = go.Figure(
     )
 )
 
-fig.update_layout(
-        title = 'Meteorite landings',
-        height = 600, 
-        geo = dict(
-            showland = True,
-            #landcolor = "rgb(100, 100, 100)",
-            #subunitcolor = "rgb(0, 0, 0)",
-            #ountrycolor = "rgb(0, 0, 0)",
-            countrywidth = 0.5,
-            subunitwidth = 0.5
-        )
-    )
-
 fig.update_geos(
     showcountries=True
 )
+
+fig.update_layout(
+        title = 'Meteorite landings',
+        height = 600, 
+        #geo = dict(
+        #    showland = True,
+        #    #landcolor = "rgb(100, 100, 100)",
+        #    #subunitcolor = "rgb(0, 0, 0)",
+        #    #ountrycolor = "rgb(0, 0, 0)",
+        #    countrywidth = 0.5,
+        #    subunitwidth = 0.5
+        #)
+    )
+
+
 
 app = dash.Dash(__name__)
 server = app.server
@@ -164,7 +166,7 @@ def update_charts(Year, val):
             symbol = 'circle',
             line = dict(
                 width=1,
-                color='rgba(102, 102, 102)'
+                #color='rgba(102, 102, 102)'
             ),
             colorscale = 'Viridis',
             cmin = 0,
@@ -174,24 +176,16 @@ def update_charts(Year, val):
         )
     )
 )
-    return fig
-
-fig.update_layout(
+    fig.update_layout(
         title = 'Meteorite landings',
-        height = 600,
-        geo = dict(
-            showland = True,
-            landcolor = "rgb(100, 100, 100)",
-            subunitcolor = "rgb(0, 0, 0)",
-            countrycolor = "rgb(0, 0, 0)",
-            countrywidth = 0.5,
-            subunitwidth = 0.5
-        ),
+       height = 600,
     )
 
-fig.update_geos(
-    showcountries=True
-)
+    fig.update_geos(
+        showcountries=True
+    )
+
+    return fig
 
 #Running dashboard
 if __name__ == '__main__':
