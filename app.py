@@ -17,7 +17,7 @@ fig = go.Figure(
         lon = df['reclong'],
         lat = df['reclat'],
         text = df['text'],
-        mode = 'markers',
+        mode = "markers",
         marker = dict(
             size = 8,
             opacity = 0.8,
@@ -42,13 +42,17 @@ fig.update_layout(
         height = 600, 
         geo = dict(
             showland = True,
-            landcolor = "rgb(100, 100, 100)",
-            subunitcolor = "rgb(0, 0, 0)",
-            countrycolor = "rgb(0, 0, 0)",
-            countrywidth = 1,
-            subunitwidth = 1
+            #landcolor = "rgb(100, 100, 100)",
+            #subunitcolor = "rgb(0, 0, 0)",
+            #ountrycolor = "rgb(0, 0, 0)",
+            countrywidth = 0.5,
+            subunitwidth = 0.5
         )
     )
+
+fig.update_geos(
+    showcountries=True
+)
 
 app = dash.Dash(__name__)
 server = app.server
@@ -151,7 +155,7 @@ def update_charts(Year, val):
         lon = filtered_data['reclong'],
         lat = filtered_data['reclat'],
         text = filtered_data['text'],
-        mode = 'markers',
+        mode = "markers",
         marker = dict(
             size = 8,
             opacity = 0.8,
@@ -184,6 +188,10 @@ fig.update_layout(
             subunitwidth = 0.5
         ),
     )
+
+fig.update_geos(
+    showcountries=True
+)
 
 #Running dashboard
 if __name__ == '__main__':
