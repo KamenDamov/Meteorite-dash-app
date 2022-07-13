@@ -30,9 +30,9 @@ fig = go.Figure(
             ),
             colorscale = 'Viridis',
             cmin = 0,
-            color = df['mass (g)'],
-            cmax = df['mass (g)'].max(),
-            colorbar_title="Mass of meteorite (in grams)"
+            color = df['mass (kg)'],
+            cmax = df['mass (kg)'].max(),
+            colorbar_title="Mass of meteorite (in kg)"
         )
     )
 )
@@ -101,7 +101,7 @@ app.layout = html.Div(
 ),
     html.Div(
             children=[
-                html.Div(children = 'Would you want to see the most significant meteorites in history?', 
+                html.Div(children = 'Would you want to see the most significant meteorites in history (top 0.1% in terms of mass in kg) ?', 
                 style={'paddingTop':'15px',
                         'fontSize': "20px",
                         'fontFamily': '"Lucida Console", "Courier New"'},
@@ -139,7 +139,7 @@ html.Div(
 
 def update_charts(Year, val):
     if val == ["Yes"] and Year == "All": 
-        filtered_data = df[df['top 1% mass']==True]
+        filtered_data = df[df['top 0.1% mass']==True]
     else:
         if Year == "All": 
             filtered_data = df
@@ -164,9 +164,9 @@ def update_charts(Year, val):
             ),
             colorscale = 'Viridis',
             cmin = 0,
-            color = filtered_data['mass (g)'],
-            cmax = filtered_data['mass (g)'].max(),
-            colorbar_title="Mass of meteorite (in grams)"
+            color = filtered_data['mass (kg)'],
+            cmax = filtered_data['mass (kg)'].max(),
+            colorbar_title="Mass of meteorite (in kg)"
         )
     )
 )
